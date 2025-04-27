@@ -931,3 +931,111 @@ public class Main {
 - The `sound` method is defined in the superclass `Animal` and overridden in the subclasses `Dog` and `Cat`.
 - The reference variable `myAnimal` of type `Animal` is used to refer to objects of both `Dog` and `Cat`.
 - When `myAnimal.sound()` is called, the JVM determines at runtime which `sound` method to invoke based on the actual object type (`Dog` or `Cat`), not the reference type (`Animal`).
+
+---
+<br/>
+
+# Final Keyword in Java
+
+* `Final Variables`: Can be assigned only once.
+* `Final Methods`: Cannot be overridden.
+* `Final Classes`: Cannot be subclassed
+---
+
+<br/>
+<br/>
+
+# Abstract Class in Java
+```
+abstract class Animal {
+    // Abstract method (doesn't have a body)
+    abstract void sound();
+
+    // Concrete method
+    void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Animal animal = new Animal(); // Error: Cannot instantiate an abstract class
+        Animal myDog = new Dog();
+        myDog.sound(); // Outputs: Dog barks
+        myDog.eat();   // Outputs: Animal is eating
+    }
+}
+```
+* An abstract class cannot be instantiated.
+
+* If a class has at least one abstract method, the classitself must be declared as abstract.
+
+* Subclasses of an abstract class must implement all abstract methods, or they must also be declared abstract.
+
+* An abstract class can have both abstract and concrete methods.
+---
+
+# Interface in Java
+
+```
+interface AnimalActions {
+    void eat();
+    void sleep();
+    void makeSound();
+}
+
+class Dog implements AnimalActions {
+    @Override
+    public void eat() {
+        System.out.println("Dog is eating");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Dog is sleeping");
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat implements AnimalActions {
+    @Override
+    public void eat() {
+        System.out.println("Cat is eating");
+    }
+
+    @Override
+    public void sleep() {
+        System.out.println("Cat is sleeping");
+    }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        AnimalActions myDog = new Dog();
+        AnimalActions myCat = new Cat();
+
+        myDog.makeSound(); // Outputs: Dog barks
+        myCat.makeSound(); // Outputs: Cat meows
+    }
+}
+
+```
+---
+
+# Collection in Java
